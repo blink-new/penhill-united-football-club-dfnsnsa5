@@ -1,0 +1,376 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Sky Sports-grade Brand Tokens */
+    --primary-blue: 203 100% 44%; /* #0686E1 */
+    --accent-purple: 250 70% 62%; /* #6B46F6 */
+    --alert-red: 239 68 68; /* #EF4444 */
+    --highlight-amber: 245 158 11; /* #F59E0B */
+    --surface-dark: 15 23 42; /* #0F172A */
+    --surface-light: 255 255 255; /* #FFFFFF */
+    --subtle-grey: 241 245 249; /* #F1F5F9 */
+    --text-primary: 220 13% 9%; /* #111827 */
+    --text-secondary: 215 16% 47%; /* #6B7280 */
+
+    /* Semantic Color Mapping */
+    --background: var(--surface-light);
+    --foreground: var(--text-primary);
+    --card: var(--surface-light);
+    --card-foreground: var(--text-primary);
+    --popover: var(--surface-light);
+    --popover-foreground: var(--text-primary);
+    --primary: var(--primary-blue);
+    --primary-foreground: var(--surface-light);
+    --secondary: var(--subtle-grey);
+    --secondary-foreground: var(--text-primary);
+    --muted: var(--subtle-grey);
+    --muted-foreground: var(--text-secondary);
+    --accent: var(--accent-purple);
+    --accent-foreground: var(--surface-light);
+    --destructive: var(--alert-red);
+    --destructive-foreground: var(--surface-light);
+    --border: 214 32% 91%; /* #E2E8F0 */
+    --input: 214 32% 91%;
+    --ring: var(--primary-blue);
+    --radius: 0.75rem;
+
+    /* Chart Colors */
+    --chart-1: var(--primary-blue);
+    --chart-2: var(--accent-purple);
+    --chart-3: var(--highlight-amber);
+    --chart-4: var(--alert-red);
+    --chart-5: 142 76% 36%; /* #22C55E */
+
+    /* Sidebar */
+    --sidebar-background: var(--surface-light);
+    --sidebar-foreground: var(--text-primary);
+    --sidebar-primary: var(--primary-blue);
+    --sidebar-primary-foreground: var(--surface-light);
+    --sidebar-accent: var(--subtle-grey);
+    --sidebar-accent-foreground: var(--text-primary);
+    --sidebar-border: var(--border);
+    --sidebar-ring: var(--primary-blue);
+  }
+
+  .dark {
+    --background: var(--surface-dark);
+    --foreground: var(--surface-light);
+    --card: var(--surface-dark);
+    --card-foreground: var(--surface-light);
+    --popover: var(--surface-dark);
+    --popover-foreground: var(--surface-light);
+    --primary: var(--primary-blue);
+    --primary-foreground: var(--surface-light);
+    --secondary: 217 32% 17%; /* #1E293B */
+    --secondary-foreground: var(--surface-light);
+    --muted: 217 32% 17%;
+    --muted-foreground: 215 20% 65%; /* #94A3B8 */
+    --accent: var(--accent-purple);
+    --accent-foreground: var(--surface-light);
+    --destructive: var(--alert-red);
+    --destructive-foreground: var(--surface-light);
+    --border: 217 32% 17%;
+    --input: 217 32% 17%;
+    --ring: var(--primary-blue);
+    --sidebar-background: var(--surface-dark);
+    --sidebar-foreground: var(--surface-light);
+    --sidebar-primary: var(--primary-blue);
+    --sidebar-primary-foreground: var(--surface-light);
+    --sidebar-accent: 217 32% 17%;
+    --sidebar-accent-foreground: var(--surface-light);
+    --sidebar-border: 217 32% 17%;
+    --sidebar-ring: var(--primary-blue);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+
+    font-family: Inter, sans-serif;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Sky Sports Typography */
+  .display-font {
+    font-family: 'Inter Tight', Inter, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@layer components {
+  /* Sky Sports-grade Glass Morphism Cards */
+  .glass-card {
+    background: rgb(255 255 255 / 8%);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgb(255 255 255 / 8%);
+    box-shadow: 
+      0 1px 2px -1px rgb(0 0 0 / 8%), 
+      0 2px 4px -2px rgb(0 0 0 / 4%);
+  }
+
+  .glass-card-dark {
+    background: rgb(15 23 42 / 80%);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgb(255 255 255 / 8%);
+  }
+
+  /* Broadcast-quality Gradients */
+  .sky-gradient {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+  }
+
+  .stat-gradient {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Sky Sports Glow Effects */
+  .sky-glow {
+    box-shadow: 
+      0 0 20px hsl(var(--accent), 0.3),
+      0 0 40px hsl(var(--accent), 0.1);
+  }
+
+  .live-glow {
+    box-shadow: 
+      0 0 20px hsl(var(--alert-red), 0.4),
+      0 0 40px hsl(var(--alert-red), 0.2);
+    animation: pulse-glow 2s ease-in-out infinite alternate;
+  }
+
+  /* Stadium Arc Easing for Dropdowns */
+  .stadium-arc {
+    animation: stadium-slide 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  /* AI Status Pulse Animation */
+  .ai-pulse {
+    animation: ai-pulse 1.4s infinite both;
+  }
+
+  .ai-dot {
+    animation: ai-dot-pulse 1.4s infinite both;
+  }
+
+  /* Micro-interaction Timing */
+  .micro-transition {
+    transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .drawer-slide {
+    transition: transform 250ms ease-out;
+  }
+
+  /* Neural Network Pattern */
+  .neural-pattern {
+    background-image: 
+      radial-gradient(circle at 25% 25%, hsl(var(--accent), 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, hsl(var(--primary), 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, hsl(var(--highlight-amber), 0.05) 0%, transparent 70%);
+  }
+
+  /* Header Styles */
+  .header-surface {
+    background: hsl(var(--surface-dark), 1);
+    backdrop-filter: blur(12px);
+  }
+
+  .nav-underline {
+    position: relative;
+  }
+
+  .nav-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: hsl(var(--primary));
+    transform: scaleX(0);
+    transition: transform 150ms ease-out;
+  }
+
+  .nav-underline.active::after {
+    transform: scaleX(1);
+  }
+
+  /* Confidence Ring Animation */
+  .confidence-ring {
+    stroke-dasharray: 251.2; /* 2 * π * 40 */
+    stroke-dashoffset: 251.2;
+    animation: confidence-fill 2s ease-out forwards;
+  }
+
+  /* Card Entrance Animation */
+  .card-entrance {
+    animation: card-slide-up 0.3s ease-out;
+  }
+
+  /* Notification Toast */
+  .toast-slide {
+    animation: toast-slide-in 0.3s ease-out;
+  }
+
+  /* Haptic Bounce */
+  .haptic-bounce:active {
+    animation: haptic-bounce 0.1s ease-out;
+  }
+}
+
+@layer utilities {
+  /* Typography Utilities */
+  .text-display {
+    font-family: 'Inter Tight', Inter, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .text-tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Elevation Utilities */
+  .elevation-card {
+    box-shadow: 
+      0 1px 2px -1px rgb(0 0 0 / 8%), 
+      0 2px 4px -2px rgb(0 0 0 / 4%);
+  }
+
+  .elevation-modal {
+    box-shadow: 
+      0 10px 15px -3px rgb(0 0 0 / 10%), 
+      0 4px 6px -4px rgb(0 0 0 / 10%);
+  }
+}
+
+/* Keyframe Animations */
+@keyframes ai-pulse {
+  0%, 80% { opacity: 20%; }
+  40% { opacity: 100%; }
+}
+
+@keyframes ai-dot-pulse {
+  0%, 80% { opacity: 20%; }
+  40% { opacity: 100%; }
+}
+
+@keyframes pulse-glow {
+  0% { box-shadow: 0 0 20px hsl(var(--alert-red), 0.4), 0 0 40px hsl(var(--alert-red), 0.2); }
+  100% { box-shadow: 0 0 30px hsl(var(--alert-red), 0.6), 0 0 60px hsl(var(--alert-red), 0.3); }
+}
+
+@keyframes stadium-slide {
+  0% { 
+    transform: scaleY(0.95);
+    opacity: 0%;
+  }
+
+  100% { 
+    transform: scaleY(1);
+    opacity: 100%;
+  }
+}
+
+@keyframes confidence-fill {
+  0% { stroke-dashoffset: 251.2; }
+  100% { stroke-dashoffset: calc(251.2 - (251.2 * var(--confidence, 0.87))); }
+}
+
+@keyframes card-slide-up {
+  0% {
+    transform: translateY(30px);
+    opacity: 0%;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 100%;
+  }
+}
+
+@keyframes toast-slide-in {
+  0% {
+    transform: translateX(100%);
+    opacity: 0%;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 100%;
+  }
+}
+
+@keyframes haptic-bounce {
+  0% { transform: scale(1); }
+  50% { transform: scale(0.95); }
+  100% { transform: scale(1); }
+}
+
+/* Responsive Design */
+@media (width <= 768px) {
+  .glass-card {
+    backdrop-filter: blur(10px);
+  }
+}
+
+/* Print Styles */
+@media print {
+  .glass-card,
+  .sky-glow,
+  .live-glow {
+    background: white !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .ai-pulse,
+  .ai-dot-pulse,
+  .pulse-glow,
+  .stadium-slide,
+  .confidence-fill,
+  .card-slide-up,
+  .toast-slide-in,
+  .haptic-bounce {
+    animation: none;
+  }
+  
+  .micro-transition,
+  .drawer-slide {
+    transition: none;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: more) {
+  .glass-card {
+    background: hsl(var(--background));
+    border: 2px solid hsl(var(--foreground));
+  }
+  
+  .stat-gradient {
+    -webkit-text-fill-color: hsl(var(--foreground));
+    background: none;
+  }
+}
