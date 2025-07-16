@@ -23,6 +23,7 @@ import {
   BellIcon, 
   AIStatusIcon 
 } from './icons/SkyIcons'
+import { WeatherWidget } from './WeatherWidget'
 
 interface HeaderProps {
   user: any
@@ -142,11 +143,8 @@ export function Header({ user, currentPage = 'dashboard', onPageChange }: Header
             {/* Right Section */}
             <div className="flex items-center space-x-3">
               
-              {/* AI Status Indicator */}
-              <div className="hidden md:flex items-center space-x-2 px-3 py-1.5 bg-green-500/20 rounded-lg border border-green-500/30">
-                <AIStatusIcon className="w-4 h-4 text-green-400" />
-                <span className="text-sm font-medium text-green-400">AI Active</span>
-              </div>
+              {/* Weather Widget */}
+              <WeatherWidget />
 
               {/* Language Toggle */}
               <DropdownMenu>
